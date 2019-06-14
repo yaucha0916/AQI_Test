@@ -14,6 +14,7 @@
 		01E28ED522B3618E00481660 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E28ED422B3618E00481660 /* Assets.xcassets */; };
 		01E28ED822B3618E00481660 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E28ED622B3618E00481660 /* LaunchScreen.storyboard */; };
 		01E28EE122B364A700481660 /* MyNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E28EE022B364A700481660 /* MyNetworkRequest.swift */; };
+		01E28EE322B3664E00481660 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E28EE222B3664E00481660 /* NetworkController.swift */; };
 		698F80E4544CA1AA0F0DDFC6 /* Pods_AQI_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37EE5BB6D8EF434D710F894 /* Pods_AQI_Test.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		01E28ED722B3618E00481660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01E28ED922B3618E00481660 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01E28EE022B364A700481660 /* MyNetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNetworkRequest.swift; sourceTree = "<group>"; };
+		01E28EE222B3664E00481660 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		70FC8C15E9E0031770C24C6F /* Pods-AQI_Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AQI_Test.debug.xcconfig"; path = "Target Support Files/Pods-AQI_Test/Pods-AQI_Test.debug.xcconfig"; sourceTree = "<group>"; };
 		7ADFC35629E603B0AC80A5B9 /* Pods-AQI_Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AQI_Test.release.xcconfig"; path = "Target Support Files/Pods-AQI_Test/Pods-AQI_Test.release.xcconfig"; sourceTree = "<group>"; };
 		F37EE5BB6D8EF434D710F894 /* Pods_AQI_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AQI_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +70,7 @@
 				01E28ECA22B3618B00481660 /* AppDelegate.swift */,
 				01E28ECC22B3618B00481660 /* ViewController.swift */,
 				01E28EE022B364A700481660 /* MyNetworkRequest.swift */,
+				01E28EE222B3664E00481660 /* NetworkController.swift */,
 				01E28ECE22B3618B00481660 /* Main.storyboard */,
 				01E28ED422B3618E00481660 /* Assets.xcassets */,
 				01E28ED622B3618E00481660 /* LaunchScreen.storyboard */,
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01E28EE322B3664E00481660 /* NetworkController.swift in Sources */,
 				01E28ED322B3618B00481660 /* AQI_Test.xcdatamodeld in Sources */,
 				01E28ECD22B3618B00481660 /* ViewController.swift in Sources */,
 				01E28EE122B364A700481660 /* MyNetworkRequest.swift in Sources */,
