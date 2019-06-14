@@ -13,6 +13,7 @@
 		01E28ED322B3618B00481660 /* AQI_Test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01E28ED122B3618B00481660 /* AQI_Test.xcdatamodeld */; };
 		01E28ED522B3618E00481660 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E28ED422B3618E00481660 /* Assets.xcassets */; };
 		01E28ED822B3618E00481660 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E28ED622B3618E00481660 /* LaunchScreen.storyboard */; };
+		698F80E4544CA1AA0F0DDFC6 /* Pods_AQI_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37EE5BB6D8EF434D710F894 /* Pods_AQI_Test.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		01E28ED422B3618E00481660 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01E28ED722B3618E00481660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01E28ED922B3618E00481660 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70FC8C15E9E0031770C24C6F /* Pods-AQI_Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AQI_Test.debug.xcconfig"; path = "Target Support Files/Pods-AQI_Test/Pods-AQI_Test.debug.xcconfig"; sourceTree = "<group>"; };
+		7ADFC35629E603B0AC80A5B9 /* Pods-AQI_Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AQI_Test.release.xcconfig"; path = "Target Support Files/Pods-AQI_Test/Pods-AQI_Test.release.xcconfig"; sourceTree = "<group>"; };
+		F37EE5BB6D8EF434D710F894 /* Pods_AQI_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AQI_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				698F80E4544CA1AA0F0DDFC6 /* Pods_AQI_Test.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				01E28EC922B3618B00481660 /* AQI_Test */,
 				01E28EC822B3618B00481660 /* Products */,
+				7F537BD31596343411223FE6 /* Pods */,
+				915B6F515A49C37DBA005B78 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,23 @@
 			path = AQI_Test;
 			sourceTree = "<group>";
 		};
+		7F537BD31596343411223FE6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				70FC8C15E9E0031770C24C6F /* Pods-AQI_Test.debug.xcconfig */,
+				7ADFC35629E603B0AC80A5B9 /* Pods-AQI_Test.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		915B6F515A49C37DBA005B78 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F37EE5BB6D8EF434D710F894 /* Pods_AQI_Test.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01E28EDC22B3618E00481660 /* Build configuration list for PBXNativeTarget "AQI_Test" */;
 			buildPhases = (
+				C61973D3052BE61462BED392 /* [CP] Check Pods Manifest.lock */,
 				01E28EC322B3618B00481660 /* Sources */,
 				01E28EC422B3618B00481660 /* Frameworks */,
 				01E28EC522B3618B00481660 /* Resources */,
+				01E28EDF22B3623B00481660 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -132,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01E28EDF22B3623B00481660 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		C61973D3052BE61462BED392 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AQI_Test-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		01E28EC322B3618B00481660 /* Sources */ = {
@@ -217,7 +285,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -272,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -284,6 +352,7 @@
 		};
 		01E28EDD22B3618E00481660 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70FC8C15E9E0031770C24C6F /* Pods-AQI_Test.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -295,13 +364,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.AnthonyYeh.AQI-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		01E28EDE22B3618E00481660 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7ADFC35629E603B0AC80A5B9 /* Pods-AQI_Test.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -313,7 +383,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.AnthonyYeh.AQI-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
