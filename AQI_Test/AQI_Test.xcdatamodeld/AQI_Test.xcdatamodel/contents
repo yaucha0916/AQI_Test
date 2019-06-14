@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AQI" representedClassName="AQI" syncable="YES" codeGenerationType="class">
+        <attribute name="aQI" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cO" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cO_8hr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="county" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nO" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nO2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nOx" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="o3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="o3_8hr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pM10" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pM10_AVG" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pM25" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pM25_AVG" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pollutant" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publishTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="siteName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sO2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sO2_AVG" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="windDirec" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="windSpeed" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AQI" positionX="-63" positionY="-18" width="128" height="390"/>
+    </elements>
 </model>
