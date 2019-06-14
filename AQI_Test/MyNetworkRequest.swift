@@ -9,7 +9,8 @@
 import UIKit
 import CoreData
 
-class MyNetworkRequest: Operation, URLSessionDataDelegate {
+class MyNetworkRequest: Operation, URLSessionDataDelegate, URLSessionDownloadDelegate {
+
     private weak var appDelegate = UIApplication.shared.delegate as? AppDelegate
     private var innerContext: NSManagedObjectContext?
     private var task: URLSessionTask?
@@ -21,14 +22,14 @@ class MyNetworkRequest: Operation, URLSessionDataDelegate {
         if let url = URL(string: urlString) {
             let config = URLSessionConfiguration.default
             let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
-            task = session.dataTask(with: url)
+            if urlString == "http://www.appledaily.com.tw/index/dailyquote/"{
+                task = session.downloadTask(with: url)
+            } else {
+                task = session.dataTask(with: url)
+            }
             task?.resume()
         }
     }
-
-    //    override func main() {
-    //        task?.resume()
-    //    }
 
     var internalFinished: Bool = false
     override var isFinished: Bool {
@@ -42,6 +43,22 @@ class MyNetworkRequest: Operation, URLSessionDataDelegate {
         }
     }
 
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+
+        print("location:\(location)")
+        //location位置转换
+        let locationPath = location.path
+        //拷贝到用户目录
+        let documnets: String = NSHomeDirectory() + "/Documents/html"
+        //创建文件管理器
+        let fileManager = FileManager.default
+        do {
+            try fileManager.moveItem(atPath: locationPath, toPath: documnets)
+            print("new location:\(documnets)")
+        } catch {
+            print(error)
+        }
+    }
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask,
                     didReceive response: URLResponse,
                     completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
@@ -81,8 +98,17 @@ class MyNetworkRequest: Operation, URLSessionDataDelegate {
             isFinished = true
             return
         }
-        //PROCESS DATA INTO CORE DATA
-        processDataIntoCoreData()
+        if let response = task.response as? HTTPURLResponse {
+            if let url = response.url {
+                if url == URL(string: "https://tw.appledaily.com/index/dailyquote") {
+                    print(incomingData)
+                    print(String(data: incomingData, encoding: .utf8))
+                } else {
+                    //PROCESS DATA INTO CORE DATA
+                    processDataIntoCoreData()
+                }
+            }
+        }
         isFinished = true
     }
 

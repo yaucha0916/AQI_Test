@@ -78,9 +78,39 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UITa
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = arr[indexPath.row].siteName
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "AQITableViewCell", for: indexPath) as? AQITableViewCell {
+            cell.siteName.text = arr[indexPath.row].siteName
+            cell.county.text = arr[indexPath.row].county
+            cell.aqiValue.text = arr[indexPath.row].aQI
+            cell.pm25.text = arr[indexPath.row].pM25
+            cell.status.text = arr[indexPath.row].status
+            return cell
+        }
+        return UITableViewCell()
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            if let detailVC = segue.destination as? DetailTableViewController, let selected = tableView.indexPathForSelectedRow {
+                detailVC.aqiInfo = arr[selected.row]
+            }
+        }
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        //左滑刪除功能
+        let delete = UITableViewRowAction(style: .destructive, title: "刪除") { (_, indexPath)
+            in
+            if let appDalegate = UIApplication.shared.delegate as? AppDelegate {
+                let context = appDalegate.persistentContainer.viewContext
+                context.delete(self.arr[indexPath.row])
+                print("delete")
+                appDalegate.saveContext()
+            }
+        }
+        return [delete]
+    }
 }

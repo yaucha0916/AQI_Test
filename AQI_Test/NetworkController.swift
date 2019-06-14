@@ -13,8 +13,11 @@ class NetworkController: NSObject {
     var mainContext: NSManagedObjectContext!
     var fetchResultsController: NSFetchedResultsController<AQI>!
     var aqiNetworkRequest: MyNetworkRequest!
+    var dailyquoteNetworkRequest: MyNetworkRequest!
 
     func requestMyData() -> NSFetchedResultsController<AQI> {
+        dailyquoteNetworkRequest = MyNetworkRequest(urlString: "http://www.appledaily.com.tw/index/dailyquote/")
+
         aqiNetworkRequest = MyNetworkRequest(urlString:
             "http://opendata.epa.gov.tw/webapi/Data/REWIQA/?$orderby=SiteName&$skip=0&$top=1000&format=json")
         //queue.addOperations([aqiNetworkRequest], waitUntilFinished: true)

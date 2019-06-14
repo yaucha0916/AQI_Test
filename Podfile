@@ -7,4 +7,5 @@ target 'AQI_Test' do
 
   # Pods for AQI_Test
   pod 'SwiftLint'
+  pod 'SwiftSoup' 
 end
