@@ -26,15 +26,11 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UITa
         guard let networkController = networkController else { return }
         fetchedResultsController = networkController.requestMyData()
         networkController.fetchResultsController.delegate = self
-        do {
-            try fetchedResultsController.performFetch()
-            if let fetchedObjects = fetchedResultsController.fetchedObjects {
-                arr = fetchedObjects as [AQI]
-            } else {
-                print("nothing in fetchedObjects")
-            }
-        } catch {
-            print(error)
+
+        if let fetchedObjects = fetchedResultsController.fetchedObjects {
+            arr = fetchedObjects as [AQI]
+        } else {
+            print("nothing in fetchedObjects")
         }
 
     }
@@ -46,7 +42,22 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UITa
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
                     didChange anObject: Any, at indexPath: IndexPath?,
                     for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        tableView.reloadData()
+        switch type {
+        case .insert:
+            if let newIndex = newIndexPath {
+                tableView.insertRows(at: [newIndex], with: .fade)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        default:
+            tableView.reloadData()
+        }
         if let fetchedObjects = fetchedResultsController.fetchedObjects {
             arr = fetchedObjects as [AQI]
         } else {
