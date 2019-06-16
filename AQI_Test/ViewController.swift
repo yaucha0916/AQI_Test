@@ -22,6 +22,7 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UITa
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             self.networkController = appDelegate.networkController
         }
+        
 
         guard let networkController = networkController else { return }
         fetchedResultsController = networkController.requestMyData()
