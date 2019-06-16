@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var dailyQuoteLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     var networkController: NetworkController?
     var arr = [AQI]()
@@ -22,8 +23,6 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UITa
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             self.networkController = appDelegate.networkController
         }
-        
-
         guard let networkController = networkController else { return }
         fetchedResultsController = networkController.requestMyData()
         networkController.fetchResultsController.delegate = self

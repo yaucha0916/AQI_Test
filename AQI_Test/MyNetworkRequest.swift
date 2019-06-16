@@ -8,13 +8,15 @@
 
 import UIKit
 import CoreData
-
-class MyNetworkRequest: Operation, URLSessionDataDelegate {
+import WebKit
+import SwiftSoup
+class MyNetworkRequest: Operation, URLSessionDataDelegate, WKNavigationDelegate {
 
     private weak var appDelegate = UIApplication.shared.delegate as? AppDelegate
     private var innerContext: NSManagedObjectContext?
     private var task: URLSessionTask?
     private var incomingData = Data()
+    private var webView = WKWebView(frame: CGRect(x: 0, y: 0, width: 1920, height: 1080))
     var error: Error?
 
     init(urlString: String) {
@@ -23,11 +25,14 @@ class MyNetworkRequest: Operation, URLSessionDataDelegate {
             let config = URLSessionConfiguration.default
             let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
             if urlString == "http://www.appledaily.com.tw/index/dailyquote" {
-                task = session.dataTask(with: url)
+                let urlRequest = URLRequest(url: url)
+                webView.navigationDelegate = self
+                webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36"
+                webView.load(urlRequest)
             } else {
                 task = session.dataTask(with: url)
+                task?.resume()
             }
-            task?.resume()
         }
     }
 
@@ -82,17 +87,8 @@ class MyNetworkRequest: Operation, URLSessionDataDelegate {
             isFinished = true
             return
         }
-        if let response = task.response as? HTTPURLResponse {
-            if let url = response.url {
-                if url == URL(string: "http://www.appledaily.com.tw/index/dailyquote") {
-                    print(url)
-                    print(incomingData)
-                } else {
-                    //PROCESS DATA INTO CORE DATA
-                    processDataIntoCoreData()
-                }
-            }
-        }
+        //PROCESS DATA INTO CORE DATA
+        processDataIntoCoreData()
         isFinished = true
     }
 
@@ -177,6 +173,33 @@ class MyNetworkRequest: Operation, URLSessionDataDelegate {
             }
         } catch {
             print( error )
+        }
+    }
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("webview finish loading")
+        webView.evaluateJavaScript("document.documentElement.outerHTML.toString()") {( html: Any?, error: Error? ) in
+            if let error = error {
+                print("webView.evaluateJavaScript error:\(error)")
+            }
+            if let htmlString = html as? String {
+                do {
+                    let doc: Document = try SwiftSoup.parse(htmlString)
+                    let metas: [Element] = try doc.select("meta").array()
+                    let dailyquote = try metas[1].attr("content")
+                    if let rootViewController = self.appDelegate?.window?.rootViewController as? UINavigationController {
+                        if let mainViewController =  rootViewController.viewControllers[0] as? ViewController {
+                            DispatchQueue.main.async {
+                                mainViewController.dailyQuoteLabel.text = " 每日一句 : " + dailyquote
+                            }
+                        }
+                    }
+                } catch Exception.Error(let type, let message) {
+                    print(type)
+                    print(message)
+                } catch {
+                    print("error")
+                }
+            }
         }
     }
 }

@@ -21,17 +21,17 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6U0-Ke-Yho">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  每日一句 : " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Aat-xG-Rmt">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  資料下載中...請稍候" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" id="Aat-xG-Rmt">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AQITableViewCell" rowHeight="145" id="hJ2-Yi-8Xa" customClass="AQITableViewCell" customModule="AQI_Test" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="414" height="145"/>
+                                        <rect key="frame" x="0.0" y="116" width="414" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hJ2-Yi-8Xa" id="6ut-GX-OP1">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="144.66666666666666"/>
@@ -147,12 +147,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="全台AQI資訊" id="qXc-Hw-VeQ"/>
                     <connections>
+                        <outlet property="dailyQuoteLabel" destination="Aat-xG-Rmt" id="eya-et-3SW"/>
                         <outlet property="tableView" destination="6U0-Ke-Yho" id="lPf-Al-Ah3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="137"/>
+            <point key="canvasLocation" x="900.00000000000011" y="136.95652173913044"/>
         </scene>
         <!--Detail Table View Controller-->
         <scene sceneID="76B-66-BNC">
